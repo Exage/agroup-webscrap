@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <meta charset="UTF-8"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>@TITLE@</title>
+
+    <style>
+        :root {
+            --black: #0A090C;
+            --black-sec: #B2B2B2;
+            
+            --white: #FFFFFF;
+            --white-sec: #EDEDED;
+
+            --red: #8C1C13;
+            --purple: #7371FC;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;;
+            font-size: 16px;
+
+            margin: 0;
+            padding: 0;
+
+            background-color: var(--white-sec);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            font-family: inherit;
+            font-size: inherit;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            margin: 0;
+            padding: 0;
+
+            font-family: inherit;
+            font-size: inherit;
+
+            border: none;
+            background: none;
+            color: inherit;
+
+            outline: none;
+        }
+
+        .page {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 98rem;
+            width: 100%;
+
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .products__header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            row-gap: .5rem;
+
+            text-align: center;
+
+            margin-bottom: 3.5rem;
+        }
+
+        .products__filter {
+            margin-bottom: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .products__filter--title {
+            /* margin-bottom: 1rem; */
+            margin-right: 1rem;
+        }
+
+        .products__filter--btns {
+            display: flex;
+            column-gap: 2rem;
+        }
+
+        .products__filter--btn {
+            padding: 1rem 1.5rem;
+            
+            background-color: var(--white);
+            
+            border-radius: 5rem;
+            
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .products__filter--btn.active {
+            position: relative;
+            
+            color: var(--white);
+            background-color: var(--black);
+            
+            padding-right: 4rem;
+        }
+
+        .products__filter--btn.active::after, .products__filter--btn.active::before {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            right: 2.5rem;
+            
+            background-color: var(--white);
+            
+            width: 2px;
+            height: calc(100% - 2rem);
+        }
+        
+        .products__filter--btn.active::after {
+            transform: rotate(45deg);
+        }
+
+        .products__filter--btn.active::before {
+            transform: rotate(-45deg);
+        }
+
+        .products__items {
+            display: grid;
+            grid-template-columns: repeat(3, 30rem);
+            justify-content: space-between;
+
+            /* column-gap: 2rem; */
+            row-gap: 3rem;
+        }
+
+        .products__item {
+            display: flex;
+            flex-direction: column;
+
+            padding: 3rem 2.5rem;
+
+            background-color: var(--white);
+
+            border-radius: .5rem;
+        }
+
+        .products__item--photo {
+            margin-bottom: 2.5rem;
+            height: 17rem;
+        }
+
+        .products__item--photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .products__item--title {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            height: 4.8rem;
+            text-overflow: ellipsis;
+        }
+
+        .products__item--info {
+            display: flex;
+            flex-direction: column;
+            
+            row-gap: 0.8rem;
+            
+            margin-bottom: 1.2rem;
+
+            color: var(--black);
+            opacity: 0.6;
+        }
+
+        .products__item--info__row {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            height: 1.9rem;
+            text-overflow: ellipsis;
+        }
+
+        .products__item--price {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            flex-direction: column;
+
+            height: 4rem;
+
+            margin-bottom: 1rem;
+        }
+
+        .products__item--price__new {
+            font-size: 2rem;
+        }
+
+        .products__item--price__old {
+            font-size: 1.2rem;
+            color: var(--black-sec);
+            position: relative;
+        }
+
+        .products__item--price__old::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-35%) rotate(7deg);
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--black-sec);
+        }
+
+        .products__item--btn {
+            display: block;
+            text-align: center;
+            
+            width: 100%;
+
+            background-color: var(--black);
+            color: var(--white);
+
+            border-radius: .5rem;
+
+            padding: 0.8rem 0;
+        }
+
+        @media (max-width: 960px) {
+            .products__items {
+                column-gap: 2rem;
+                grid-template-columns: repeat(2, 30rem);
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .products__items {
+                column-gap: 2rem;
+                grid-template-columns: repeat(1, 30rem);
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .products__items {
+                grid-template-columns: 1fr;
+            }
+
+            .products__item {
+                width: 100%;
+                padding: 1.5rem;
+            }
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    <div class="page">
+
+        <div class="container">
+            <div class="products">
+
+                <div class="products__header">
+                    <div class="products__header--row">Порядковый номер отбора: <b>@PARSENUMBER@</b></div>
+                    <div class="products__header--row">Дата отбора: <b>@PARSEDATE@</b></div>
+                    <div class="products__header--row">Количество товаров: <b>@PRODUCTSNUMB@</b></div>
+                </div>
+
+                <div class="products__filter">
+                    <div class="products__filter--title">
+                        <div class="products__header--row">
+                            Сортировка по:
+                        </div>
+                    </div>
+                    <div class="products__filter--btns">
+                        <button class="products__filter--btn" data-type="alphabet">алфавиту</button>
+                        <button class="products__filter--btn" data-type="price">цене</button>
+                    </div>
+                </div>
+
+                <div class="products__items">
+
+                    <!-- REPLACE -->
+
+                    <div class="products__item">
+                        <div class="products__item--photo">
+                            <img src="https://agroup.by/upload/Sh/imageCache/288/236/236468478112859.webp" alt="">
+                        </div>
+                        <div class="products__item--head">
+                            <h1 class="products__item--title">CCCCCCC</h1>
+                        </div>
+                        <div class="products__item--info">
+                            <div class="products__item--info__row">
+                                экран 15.6, 1920х1080, 144 Гц
+                            </div>
+                            <div class="products__item--info__row">
+                                intel core i5 12450H
+                            </div>
+                            <div class="products__item--info__row">
+                                NVIDIA GeForce RTX 2050 4 ГБ
+                            </div>
+                            <div class="products__item--info__row">
+                                оперативная память 8 Гб
+                            </div>
+                            <div class="products__item--info__row">
+                                накопитель 512 Гб
+                            </div>
+                        </div>
+                        <div class="products__item--price">
+                            <h1 class="products__item--price__new">3000 р.</h1>
+                            <!-- <h1 class="products__item--price__old">3000 р.</h1> -->
+                        </div>
+                        <div class="products__item--bottom">
+                            <a href="#" class="products__item--btn">В магазин</a>
+                        </div>
+                    </div>
+                    <div class="products__item">
+                        <div class="products__item--photo">
+                            <img src="https://agroup.by/upload/Sh/imageCache/288/236/236468478112859.webp" alt="">
+                        </div>
+                        <div class="products__item--head">
+                            <h1 class="products__item--title">XXXXX</h1>
+                        </div>
+                        <div class="products__item--info">
+                            <div class="products__item--info__row">
+                                экран 15.6, 1920х1080, 144 Гц
+                            </div>
+                            <div class="products__item--info__row">
+                                intel core i5 12450H
+                            </div>
+                            <div class="products__item--info__row">
+                                NVIDIA GeForce RTX 2050 4 ГБ
+                            </div>
+                            <div class="products__item--info__row">
+                                оперативная память 8 Гб
+                            </div>
+                            <div class="products__item--info__row">
+                                накопитель 512 Гб
+                            </div>
+                        </div>
+                        <div class="products__item--price">
+                            <h1 class="products__item--price__new">1500.50 р.</h1>
+                            <!-- <h1 class="products__item--price__old">3000 р.</h1> -->
+                        </div>
+                        <div class="products__item--bottom">
+                            <a href="#" class="products__item--btn">В магазин</a>
+                        </div>
+                    </div>
+                    <div class="products__item">
+                        <div class="products__item--photo">
+                            <img src="https://agroup.by/upload/Sh/imageCache/288/236/236468478112859.webp" alt="">
+                        </div>
+                        <div class="products__item--head">
+                            <h1 class="products__item--title">BBBBBB</h1>
+                        </div>
+                        <div class="products__item--info">
+                            <div class="products__item--info__row">
+                                экран 15.6, 1920х1080, 144 Гц
+                            </div>
+                            <div class="products__item--info__row">
+                                intel core i5 12450H
+                            </div>
+                            <div class="products__item--info__row">
+                                NVIDIA GeForce RTX 2050 4 ГБ
+                            </div>
+                            <div class="products__item--info__row">
+                                оперативная память 8 Гб
+                            </div>
+                            <div class="products__item--info__row">
+                                накопитель 512 Гб
+                            </div>
+                        </div>
+                        <div class="products__item--price">
+                            <h1 class="products__item--price__new">1500 р.</h1>
+                            <!-- <h1 class="products__item--price__old">3000 р.</h1> -->
+                        </div>
+                        <div class="products__item--bottom">
+                            <a href="#" class="products__item--btn">В магазин</a>
+                        </div>
+                    </div>
+                    <div class="products__item">
+                        <div class="products__item--photo">
+                            <img src="https://agroup.by/upload/Sh/imageCache/288/236/236468478112859.webp" alt="">
+                        </div>
+                        <div class="products__item--head">
+                            <h1 class="products__item--title">AAAAAAAA</h1>
+                        </div>
+                        <div class="products__item--info">
+                            <div class="products__item--info__row">
+                                экран 15.6, 1920х1080, 144 Гц
+                            </div>
+                            <div class="products__item--info__row">
+                                intel core i5 12450H
+                            </div>
+                            <div class="products__item--info__row">
+                                NVIDIA GeForce RTX 2050 4 ГБ
+                            </div>
+                            <div class="products__item--info__row">
+                                оперативная память 8 Гб
+                            </div>
+                            <div class="products__item--info__row">
+                                накопитель 512 Гб
+                            </div>
+                        </div>
+                        <div class="products__item--price">
+                            <h1 class="products__item--price__new">800 р.</h1>
+                            <!-- <h1 class="products__item--price__old">3000 р.</h1> -->
+                        </div>
+                        <div class="products__item--bottom">
+                            <a href="#" class="products__item--btn">В магазин</a>
+                        </div>
+                    </div>
+
+                    <!-- REPLACE -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const productsWrappers = document.querySelector('.products__items');
+        const products = document.querySelectorAll('.products__item');
+        
+        const sortByAlphabet = Array.from(products).sort((a, b) => {
+            const titleA = a.querySelector('.products__item--title').textContent.toLowerCase();
+            const titleB = b.querySelector('.products__item--title').textContent.toLowerCase();
+            if (titleA < titleB) {
+                return -1;
+            };
+            if (titleA > titleB) {
+                return 1;
+            };
+            return 0;
+        });
+        
+        const sortByPrice = Array.from(products).sort((a, b) => {
+            const titleA = parseFloat(a.querySelector('.products__item--price__new').textContent.match(/\d+(\.\d+)?/)[0], 10);
+            const titleB = parseFloat(b.querySelector('.products__item--price__new').textContent.match(/\d+(\.\d+)?/)[0], 10);
+            if (titleA < titleB) {
+                return -1;
+            };
+            if (titleA > titleB) {
+                return 1;
+            };
+            return 0;
+        });
+
+
+        function sortBtn(btn, sortedArr) {
+            
+            productsWrappers.innerHTML = ''
+            
+            if (!btn.classList.contains('active')) {
+                for (let i = 0; i < products.length; i++) {
+                    productsWrappers.insertAdjacentElement('beforeend', sortedArr[i]);
+                };
+                allFilterBtns.forEach(item => item.classList.remove('active'));
+                btn.classList.add('active');
+            } else {
+                for (let i = 0; i < products.length; i++) {
+                    productsWrappers.insertAdjacentElement('beforeend', products[i]);
+                };
+                btn.classList.remove('active');
+            }
+        }
+
+        const allFilterBtns = document.querySelectorAll('.products__filter--btn')
+
+        sortByAlphabetBtn = document.querySelector('[data-type="alphabet"]');
+        sortByAlphabetBtn.addEventListener('click', () => {
+            sortBtn(sortByAlphabetBtn, sortByAlphabet)
+        });
+
+        sortByPriceBtn = document.querySelector('[data-type="price"]');
+        sortByPriceBtn.addEventListener('click', () => {
+            sortBtn(sortByPriceBtn, sortByPrice)
+        });
+    </script>
+</body>
+
+</html>
