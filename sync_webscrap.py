@@ -2,7 +2,6 @@ from bs4 import BeautifulSoup
 import requests
 
 import json
-import datetime
 
 from add_to_db import add_products_to_db
 from urls import url_main

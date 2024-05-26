@@ -1,9 +1,0 @@
-Lenovo IdeaPad Slim 5 14IRL8 82XD0024RK
-{'id': 2001, 'name': 'Размер экрана (")', 'text': '14', 'options': [{'value_id': None, 'sort': '2', 'text': '14', 'image': '', 'color': ''}]}
-{'id': 2793, 'name': 'Разрешение экрана', 'text': '1920x1200', 'options': [{'value_id': None, 'sort': '3', 'text': '1920x1200', 'image': '', 'color': ''}]}
-{'id': 5474, 'name': 'Частота матрицы (Гц)', 'text': '60', 'options': [{'value_id': None, 'sort': '4', 'text': '60', 'image': '', 'color': ''}]}
-{'id': 2785, 'name': 'Процессор', 'text': 'Intel Core i5', 'options': [{'value_id': None, 'sort': '5', 'text': 'Intel Core i5', 'image': '', 'color': ''}]}
-{'id': 2787, 'name': 'Модель процессора', 'text': '13420H', 'options': [{'value_id': None, 'sort': '5', 'text': '13420H', 'image': '', 'color': ''}]}
-{'id': 2797, 'name': 'Оперативная память (Гб)', 'text': '8', 'options': [{'value_id': None, 'sort': '8', 'text': '8', 'image': '', 'color': ''}]}
-{'id': 2003, 'name': 'Ёмкость накопителя (Гб)', 'text': '512 ГБ', 'options': [{'value_id': None, 'sort': '9', 'text': '512 ГБ', 'image': '', 'color': ''}]}
-{'id': 2805, 'name': 'Видеокарта', 'text': 'встроенная', 'options': [{'value_id': None, 'sort': '13', 'text': 'встроенная', 'image': '', 'color': ''}]}

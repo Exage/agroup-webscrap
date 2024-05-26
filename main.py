@@ -44,7 +44,7 @@ def run_async_handler():
     update_tree()
 
 root = Tk()
-root.title("Парсер нахуй")
+root.title("Парсер")
 root.geometry("500x300")
 root.minsize(300,300)
 

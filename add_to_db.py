@@ -36,9 +36,6 @@ def add_products_to_db(items):
         'products_in_catalog': len(products)
     })
 
-    with open('result.txt', 'w') as file:
-        file.write(str(products))
-
     for product in products:
         product['parsing_number'] = parsing_number
 
