@@ -75,7 +75,7 @@ def gen_file(parsing_info, products, title='Result'):
 
     data = data.replace('\n', '')
 
-    file_to_open = 'dist/index.html'
+    file_to_open = 'result/index.html'
 
     with open(file_to_open, 'w', encoding='utf-8') as file:
         file.write(data)

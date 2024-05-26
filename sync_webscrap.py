@@ -41,9 +41,6 @@ def main(urls):
 
         catalog[1].extend(items[1])
 
-    with open('result.txt', 'w') as file:
-        file.write(str(catalog))
-
     add_products_to_db(catalog)
 
 def run_sync(urls):
