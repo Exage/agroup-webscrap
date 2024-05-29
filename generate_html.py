@@ -75,9 +75,14 @@ def gen_file(parsing_info, products, title='Result'):
 
     data = data.replace('\n', '')
 
-    file_to_open = 'result/index.html'
+    dist_folder = 'dist'
 
-    with open(file_to_open, 'w', encoding='utf-8') as file:
+    if not os.path.exists(dist_folder):
+        os.makedirs(dist_folder)
+        
+    file_to_open = f'{dist_folder}/index.html'
+
+    with open(file_to_open, 'w+', encoding='utf-8') as file:
         file.write(data)
 
     webbrowser.open(f'file://{os.path.abspath(file_to_open)}')
